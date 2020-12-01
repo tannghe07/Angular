@@ -1,0 +1,25 @@
+<h1>ReactiveFormModule</h1>
+<h2>Hello {{user}}</h2>
+<form [formGroup]="frm" (ngSubmit)="login()">
+  <div>
+    <input formControlName = "user" type="text" placeholder="UserName">
+    <div *ngIf="flag || (frm.get('user').dirty || frm.get('user').touched)">
+      <label for="" *ngIf="frm.get('user').errors?.required">UserName not a space</label>
+      <label for="" *ngIf="frm.get('user').errors?.minlength">UserName has to 8 character</label>
+    </div>
+  </div>
+  <div>
+    <input formControlName = "password" type="password" placeholder="Password">
+    <div *ngIf="flag || (frm.get('password').dirty || frm.get('password').touched)">
+      <label for="" *ngIf="frm.get('password').errors?.required">PassWord not a space</label>
+      <label for="" *ngIf="frm.get('password').errors?.minlength">PassWord has to 8 character</label>
+    </div>
+  </div>
+  <div>
+    <input formControlName = "confirmPass" type="password" placeholder="Confirm Password">
+    <div *ngIf="flag || (frm.get('confirmPass').dirty || frm.get('confirmPass').touched)">
+      <label for="" *ngIf="frm.get('confirmPass').errors?.compare">Please confirm password</label>
+    </div>
+  </div>
+  <button type="submit">SignIn</button>
+</form>
